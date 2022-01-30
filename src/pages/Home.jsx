@@ -1,8 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import RegistrationForm from "../components/RegistrationForm";
 
 const Home = () => {
-  return <Navbar />;
+  return (
+    <div>
+      <Navbar />
+      <RegistrationForm />
+    </div>
+  );
 };
 
 export default Home;
