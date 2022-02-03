@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import RegistrationForm from "../components/RegistrationForm";
+import Register from "../components/Register";
 
 const Home = () => {
   return (
