@@ -3,9 +3,8 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const Form = styled(Modal)`
+export const Form = styled.form`
   display: flex;
-  flex-direction: row;
   a {
     color: #3e77aa;
     transition: 0.2s ease-in-out;
@@ -17,10 +16,13 @@ export const Form = styled(Modal)`
 `;
 
 export const Left = styled.div`
-  flex: 1;
-  width: 60%;
+  flex: 1.5;
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid #e9e9e9;
+  padding-right: 20px;
 `;
 
 export const Label = styled.label`
@@ -55,8 +57,9 @@ export const Submit = styled.button`
   font-size: 14px;
   color: white;
   width: 100%;
-  height: 10%;
-  padding: 10px;
+  min-height: 35px;
+  align-items: center;
+  justify-content: center;
   background-color: #00a046;
   border: none;
   border-radius: 4px;
@@ -72,6 +75,16 @@ export const Rlink = styled.span`
   font-size: 12px;
   text-align: center;
   margin-top: 5px;
+`;
+
+export const Divider = styled.span`
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  font-size: 12px;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  color: #a6a5a5;
 `;
 
 export const Right = styled.div`

@@ -1,5 +1,5 @@
 import React from "react";
-import Register from "../Register";
+import RegistrationForm from "../RegistrationForm";
 import { Center, Container, Left, Right, Wrapper } from "./Navbar.styles";
 
 const Navbar = () => {
@@ -7,7 +7,7 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Right>
-          <Register />
+          <RegistrationForm />
         </Right>
       </Wrapper>
     </Container>

@@ -10,11 +10,11 @@ import {
   Submit,
   Rlink,
   Fieldset,
-} from "./RegistrationForm.styles";
+} from "./LoginForm.styles";
 import { LoginOutlined, EyeOutlined } from "@ant-design/icons/lib/icons";
 import { useState } from "react";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -36,7 +36,7 @@ const LoginForm = () => {
         style={{ color: "black" }}
       ></LoginOutlined>
       <Form
-        title="Регистрация"
+        title="Вход"
         onCancel={handleCancel}
         visible={isModalVisible}
         footer={null}
@@ -48,13 +48,6 @@ const LoginForm = () => {
           <Label>Фамилия</Label>
           <Input></Input>
 
-          <Label>Номер телефона</Label>
-          <Input></Input>
-
-          <Label>Эл. почта</Label>
-          <Input></Input>
-
-          <Label>Придумайте пароль</Label>
           <Fieldset>
             <Input></Input>
             <EyeOutlined style={{ margin: "0 0 3% 3%" }} />
