@@ -9,7 +9,7 @@ const Navbar = () => {
         <Left></Left>
         <Center></Center>
         <Right>
-          <LoginOutlined style={}/>
+          <LoginOutlined />
         </Right>
       </Wrapper>
     </Container>
