@@ -18,8 +18,10 @@ import { Modal, Button } from "antd";
 import RegistrationForm from "../RegistrationForm";
 import ModalSocial from "../ModalSocial";
 
+
 const LoginForm = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
+
 
   const showLogin = () => {
     setIsLoginVisible(true);
@@ -35,15 +37,19 @@ const LoginForm = () => {
 
   return (
     <Container>
+
       <a type="primary" onClick={showLogin} style={{ color: "white" }}>
         Вход
       </a>
       <Modal
+
+
         title="Вход"
         onCancel={handleCancel}
         visible={isLoginVisible}
         footer={null}
       >
+
         <Form
           title="Вход"
           onCancel={handleCancel}
@@ -60,6 +66,7 @@ const LoginForm = () => {
 
               <EyeOutlined style={{ margin: "0 0 3% 3%" }} />
             </Fieldset>
+
 
             <Remember>Запомнить меня</Remember>
 
