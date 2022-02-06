@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Acception,
   Container,
   Form,
   Input,
@@ -10,75 +9,74 @@ import {
   Submit,
   Rlink,
   Fieldset,
-} from "./RegistrationForm.styles";
+  Remember,
+  Divider,
+} from "./LoginForm.styles";
 import { LoginOutlined, EyeOutlined } from "@ant-design/icons/lib/icons";
 import { useState } from "react";
+import { Modal, Button } from "antd";
+import RegistrationForm from "../RegistrationForm";
+import ModalSocial from "../ModalSocial";
 
 const LoginForm = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
+  const showLogin = () => {
+    setIsLoginVisible(true);
   };
 
   const handleOk = () => {
-    setIsModalVisible(false);
+    setIsLoginVisible(false);
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setIsLoginVisible(false);
   };
 
   return (
     <Container>
-      <LoginOutlined
-        onClick={showModal}
-        style={{ color: "black" }}
-      ></LoginOutlined>
-      <Form
-        title="Регистрация"
+      <a type="primary" onClick={showLogin} style={{ color: "white" }}>
+        Вход
+      </a>
+      <Modal
+        title="Вход"
         onCancel={handleCancel}
-        visible={isModalVisible}
+        visible={isLoginVisible}
         footer={null}
       >
-        <Left>
-          <Label>Имя</Label>
-          <Input></Input>
-
-          <Label>Фамилия</Label>
-          <Input></Input>
-
-          <Label>Номер телефона</Label>
-          <Input></Input>
-
-          <Label>Эл. почта</Label>
-          <Input></Input>
-
-          <Label>Придумайте пароль</Label>
-          <Fieldset>
+        <Form
+          title="Вход"
+          onCancel={handleCancel}
+          visible={isLoginVisible}
+          footer={null}
+        >
+          <Left>
+            <Label>Эл. почта или телефон</Label>
             <Input></Input>
-            <EyeOutlined style={{ margin: "0 0 3% 3%" }} />
-          </Fieldset>
 
-          <Acception>
-            Регистрируясь, вы соглашаетесь с условиями
-            <a target="_blank" href="https://rozetka.com.ua/pages/privacy/">
-              {" "}
-              положения о сборе и защите персональных данных и пользовательским
-              соглашением
-            </a>
-          </Acception>
+            <Label>Пароль</Label>
+            <Fieldset>
+              <Input></Input>
 
-          <Submit onClick={handleOk}>Зарегистрироваться</Submit>
+              <EyeOutlined style={{ margin: "0 0 3% 3%" }} />
+            </Fieldset>
 
-          <Rlink>
-            <a onClick={handleCancel} target="_blank">
-              Я уже зарегестрирован
-            </a>
-          </Rlink>
-        </Left>
-        <Right></Right>
-      </Form>
+            <Remember>Запомнить меня</Remember>
+
+            <Submit onClick={handleOk}>Войти</Submit>
+
+            <Rlink>
+              <a onClick={handleCancel} target="_blank">
+                Зарегестрироваться
+              </a>
+            </Rlink>
+            <Divider>или</Divider>
+          </Left>
+          <Right>
+            <ModalSocial />
+          </Right>
+        </Form>
+      </Modal>
     </Container>
   );
 };
