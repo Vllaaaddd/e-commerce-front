@@ -13,6 +13,12 @@ export const Form = styled.form`
       color: #d35232;
     }
   }
+
+  p {
+    font-size: 10px;
+    color: red;
+    margin: -3px 0px 3px 0px;
+  }
 `;
 
 export const Left = styled.div`
@@ -60,7 +66,7 @@ export const Submit = styled.button`
   min-height: 35px;
   align-items: center;
   justify-content: center;
-  background-color: #00a046;
+  background-color: var(--secondary);
   border: none;
   border-radius: 4px;
   cursor: pointer;
