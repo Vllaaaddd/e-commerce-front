@@ -1,13 +1,3 @@
-import React from "react";
-
-const Search = () => {
-  return (
-    <Form>
-      <Input></Input>
-      <Mic></Mic>
-      <Submit></Submit>
-    </Form>
-  );
-};
+import Search from './Search';
 
 export default Search;
