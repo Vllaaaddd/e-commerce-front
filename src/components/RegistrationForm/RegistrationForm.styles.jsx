@@ -66,7 +66,7 @@ export const Submit = styled.button`
   min-height: 35px;
   align-items: center;
   justify-content: center;
-  background-color: var(--secondary);
+  background-color: var(--button);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -88,7 +88,7 @@ export const Divider = styled.span`
   left: 100%;
   top: 50%;
   font-size: 12px;
-  background-color: white;
+  background-color: var(--main);
   transform: translate(-50%, -50%);
   color: #a6a5a5;
 `;

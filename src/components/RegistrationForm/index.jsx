@@ -20,6 +20,7 @@ import ModalSocial from "../ModalSocial";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
 
 const schema = yup.object({
   firstName: yup.string().required("Введите свое имя на кириллице"),
@@ -32,6 +33,7 @@ const schema = yup.object({
 const RegistrationForm = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoginVisible, setLoginVisible] = useState(false);
+
   const {
     handleSubmit,
     control,
@@ -66,9 +68,13 @@ const RegistrationForm = () => {
     setLoginVisible(true);
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  async function onSubmit(data) {
+    const responce = await axios.post(
+      "https://jsonplaceholder.typicode.com/posts",
+      data
+    );
+    console.log(responce.data);
+  }
 
   return (
     <Container>
