@@ -20,7 +20,7 @@ import axios from 'axios';
 import { schema, defaultValues } from '../../../validators/registration';
 import { registration } from './constants';
 
-const RegistrationForm = ({ visibility }) => {
+const RegistrationForm = ({ handleVisibility }) => {
   const {
     handleSubmit,
     control,
@@ -106,7 +106,7 @@ const RegistrationForm = ({ visibility }) => {
           </Acception>
           <Submit type='submit'>Зарегистрироваться</Submit>
           <Rlink>
-            <a onClick={() => visibility()} target='_blank'>
+            <a onClick={() => handleVisibility()} target='_blank'>
               Я уже зарегестрирован
             </a>
           </Rlink>

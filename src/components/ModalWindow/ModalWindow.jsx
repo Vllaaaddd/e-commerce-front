@@ -35,8 +35,8 @@ const ModalWindow = () => {
 
       <Modal title={component} visible={isLoginModal} onCancel={() => handleCancel()} footer={null}>
         <div>
-          {component === 'Login' && <LoginForm visibility={change} />}
-          {component === 'Registration' && <RegistrationForm visibility={change} />}
+          {component === 'Login' && <LoginForm handleVisibility={change} />}
+          {component === 'Registration' && <RegistrationForm handleVisibility={change} />}
         </div>
       </Modal>
     </div>
