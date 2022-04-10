@@ -21,7 +21,7 @@ const styles = {
   }
 };
 
-const LoginForm = ({ visibility }) => {
+const LoginForm = ({ handleVisibility }) => {
   return (
     <Container>
       <Form>
@@ -41,7 +41,7 @@ const LoginForm = ({ visibility }) => {
           <Submit>Войти</Submit>
 
           <Rlink>
-            <a onClick={() => visibility()} target='_blank'>
+            <a onClick={() => handleVisibility()} target='_blank'>
               Зарегестрироваться
             </a>
           </Rlink>
