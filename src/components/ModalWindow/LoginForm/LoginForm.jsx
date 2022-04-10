@@ -13,8 +13,13 @@ import {
   Divider
 } from './LoginForm.styles';
 import { EyeOutlined } from '@ant-design/icons/lib/icons';
-import ModalSocial from '../ModalSocial';
-import { Checkbox } from 'antd';
+import ModalSocial from '../Social';
+
+const styles = {
+  eye: {
+    margin: '0 0 3% 3%'
+  }
+};
 
 const LoginForm = ({ visibility }) => {
   return (
@@ -22,13 +27,13 @@ const LoginForm = ({ visibility }) => {
       <Form>
         <Left>
           <Label>Эл. почта или телефон</Label>
-          <Input></Input>
+          <Input />
 
           <Label>Пароль</Label>
           <Fieldset>
-            <Input></Input>
+            <Input />
 
-            <EyeOutlined style={{ margin: '0 0 3% 3%' }} />
+            <EyeOutlined style={styles.eye} />
           </Fieldset>
 
           <Remember>Запомнить меня</Remember>

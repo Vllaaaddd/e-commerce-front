@@ -1,6 +1,6 @@
 import { FacebookOutlined, GoogleOutlined } from '@ant-design/icons/lib/icons';
 import React from 'react';
-import { Container, Label, SocialBtn } from './ModalSocial.styles';
+import { Container, Label, SocialBtn } from './Social.styles';
 
 const ModalSocial = () => {
   return (

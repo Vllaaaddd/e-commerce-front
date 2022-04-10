@@ -13,11 +13,11 @@ import {
   Divider
 } from './RegistrationForm.styles';
 import { EyeOutlined } from '@ant-design/icons/lib/icons';
-import ModalSocial from '../ModalSocial';
+import ModalSocial from '../Social';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import { schema, defaultValues } from '../../validators/registration';
+import { schema, defaultValues } from '../../../validators/registration';
 import { registration } from './constants';
 
 const RegistrationForm = ({ visibility }) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-import RegistrationForm from '../RegistrationForm';
-import LoginForm from '../LoginForm';
+import RegistrationForm from './RegistrationForm';
+import LoginForm from './LoginForm';
 import { LoginOutlined } from '@ant-design/icons';
 
 const ModalWindow = () => {

@@ -1,4 +1,3 @@
-import Modal from 'antd/lib/modal/Modal';
 import { Checkbox } from 'antd';
 import styled from 'styled-components';
 
