@@ -5,7 +5,7 @@ export const schema = yup.object({
   lastName: yup.string().required('Введите свою фамилию на кириллице'),
   phone: yup.string().required('Введите свой номер телефона'),
   email: yup.string().email().required('Введите свою эл. почту'),
-  password: yup.string().required('Введите пароль'),
+  password: yup.string().required('Введите пароль')
 });
 
 export const defaultValues = {
@@ -13,5 +13,5 @@ export const defaultValues = {
   lastName: '',
   phone: '',
   email: '',
-  password: '',
+  password: ''
 };

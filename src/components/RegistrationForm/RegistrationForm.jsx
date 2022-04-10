@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Acception,
   Container,
@@ -10,32 +10,29 @@ import {
   Submit,
   Rlink,
   Fieldset,
-  Divider,
-} from "./RegistrationForm.styles";
-import { EyeOutlined } from "@ant-design/icons/lib/icons";
-import ModalSocial from "../ModalSocial";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
-import { schema, defaultValues } from "../../validators/registration";
-import { registration } from "./constants";
+  Divider
+} from './RegistrationForm.styles';
+import { EyeOutlined } from '@ant-design/icons/lib/icons';
+import ModalSocial from '../ModalSocial';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import { schema, defaultValues } from '../../validators/registration';
+import { registration } from './constants';
 
 const RegistrationForm = ({ visibility }) => {
   const {
     handleSubmit,
     control,
     formState: { errors },
-    reset,
+    reset
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues,
+    defaultValues
   });
 
   async function onSubmit(data) {
-    const responce = await axios.post(
-      "https://jsonplaceholder.typicode.com/posts",
-      data
-    );
+    const responce = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
     console.log(responce.data);
   }
   return (
@@ -45,20 +42,18 @@ const RegistrationForm = ({ visibility }) => {
           <Label>Имя</Label>
           <Controller
             control={control}
-            name="firstName"
+            name='firstName'
             render={({ field }) => (
               <>
                 <Input {...field}></Input>
-                {errors.firstName?.message && (
-                  <p>{errors.firstName?.message}</p>
-                )}
+                {errors.firstName?.message && <p>{errors.firstName?.message}</p>}
               </>
             )}
           />
           <Label>Фамилия</Label>
           <Controller
             control={control}
-            name="lastName"
+            name='lastName'
             render={({ field }) => (
               <>
                 <Input {...field}></Input>
@@ -69,7 +64,7 @@ const RegistrationForm = ({ visibility }) => {
           <Label>Номер телефона</Label>
           <Controller
             control={control}
-            name="phone"
+            name='phone'
             render={({ field }) => (
               <>
                 <Input {...field}></Input>
@@ -80,7 +75,7 @@ const RegistrationForm = ({ visibility }) => {
           <Label>Эл. почта</Label>
           <Controller
             control={control}
-            name="email"
+            name='email'
             render={({ field }) => (
               <>
                 <Input {...field}></Input>
@@ -92,27 +87,26 @@ const RegistrationForm = ({ visibility }) => {
           <Fieldset>
             <Controller
               control={control}
-              name="password"
+              name='password'
               render={({ field }) => (
                 <>
                   <Input {...field}></Input>
                 </>
               )}
             />
-            <EyeOutlined style={{ margin: "0 0 3% 3%" }} />
+            <EyeOutlined style={{ margin: '0 0 3% 3%' }} />
           </Fieldset>
           {errors.password?.message && <p>{errors.password?.message}</p>}
           <Acception>
             Регистрируясь, вы соглашаетесь с условиями
-            <a target="_blank" href="https://rozetka.com.ua/pages/privacy/">
-              {" "}
-              положения о сборе и защите персональных данных и пользовательским
-              соглашением
+            <a target='_blank' href='https://rozetka.com.ua/pages/privacy/'>
+              {' '}
+              положения о сборе и защите персональных данных и пользовательским соглашением
             </a>
           </Acception>
-          <Submit type="submit">Зарегистрироваться</Submit>
+          <Submit type='submit'>Зарегистрироваться</Submit>
           <Rlink>
-            <a onClick={() => visibility()} target="_blank">
+            <a onClick={() => visibility()} target='_blank'>
               Я уже зарегестрирован
             </a>
           </Rlink>

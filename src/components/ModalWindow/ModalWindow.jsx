@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Button, Modal } from "antd";
-import RegistrationForm from "../RegistrationForm";
-import LoginForm from "../LoginForm";
-import { LoginOutlined } from "@ant-design/icons";
+import React, { useState } from 'react';
+import { Button, Modal } from 'antd';
+import RegistrationForm from '../RegistrationForm';
+import LoginForm from '../LoginForm';
+import { LoginOutlined } from '@ant-design/icons';
 
 const ModalWindow = () => {
   const [isLoginModal, setLoginModal] = useState(false);
-  const [isComponent, setComponent] = useState("Login");
+  const [isComponent, setComponent] = useState('Login');
 
   const handleClick = () => {
     setLoginModal(true);
@@ -14,14 +14,14 @@ const ModalWindow = () => {
 
   const handleCancel = () => {
     setLoginModal(false);
-    setComponent("Login");
+    setComponent('Login');
   };
 
   const change = () => {
-    if (isComponent === "Login") {
-      setComponent("Registration");
+    if (isComponent === 'Login') {
+      setComponent('Registration');
     } else {
-      setComponent("Login");
+      setComponent('Login');
     }
   };
 
@@ -29,7 +29,7 @@ const ModalWindow = () => {
     <div>
       <LoginOutlined
         onClick={() => handleClick()}
-        style={{ color: "white", cursor: "pointer", transform: "scale(1.32)" }}
+        style={{ color: 'white', cursor: 'pointer', transform: 'scale(1.32)' }}
       />
 
       <Modal
@@ -39,10 +39,8 @@ const ModalWindow = () => {
         footer={null}
       >
         <div>
-          {isComponent === "Login" && <LoginForm visibility={change} />}
-          {isComponent === "Registration" && (
-            <RegistrationForm visibility={change} />
-          )}
+          {isComponent === 'Login' && <LoginForm visibility={change} />}
+          {isComponent === 'Registration' && <RegistrationForm visibility={change} />}
         </div>
       </Modal>
     </div>

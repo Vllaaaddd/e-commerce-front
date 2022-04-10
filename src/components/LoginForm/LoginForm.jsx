@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Container,
   Form,
@@ -10,11 +10,11 @@ import {
   Rlink,
   Fieldset,
   Remember,
-  Divider,
-} from "./LoginForm.styles";
-import { EyeOutlined } from "@ant-design/icons/lib/icons";
-import ModalSocial from "../ModalSocial";
-import { Checkbox } from "antd";
+  Divider
+} from './LoginForm.styles';
+import { EyeOutlined } from '@ant-design/icons/lib/icons';
+import ModalSocial from '../ModalSocial';
+import { Checkbox } from 'antd';
 
 const LoginForm = ({ visibility }) => {
   return (
@@ -28,7 +28,7 @@ const LoginForm = ({ visibility }) => {
           <Fieldset>
             <Input></Input>
 
-            <EyeOutlined style={{ margin: "0 0 3% 3%" }} />
+            <EyeOutlined style={{ margin: '0 0 3% 3%' }} />
           </Fieldset>
 
           <Remember>Запомнить меня</Remember>
@@ -36,7 +36,7 @@ const LoginForm = ({ visibility }) => {
           <Submit>Войти</Submit>
 
           <Rlink>
-            <a onClick={() => visibility()} target="_blank">
+            <a onClick={() => visibility()} target='_blank'>
               Зарегестрироваться
             </a>
           </Rlink>
