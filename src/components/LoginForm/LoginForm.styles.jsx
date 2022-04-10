@@ -4,7 +4,27 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const Remember = styled(Checkbox)``;
+export const Remember = styled(Checkbox)`
+  .ant-checkbox .ant-checkbox-inner {
+    background-color: white;
+    border-color: gray;
+    transform: scale(0.8);
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: green;
+    border-color: gray;
+
+    :hover {
+      background-color: white;
+    }
+  }
+  .ant-checkbox + span {
+    font-size: 10px;
+    display: inline;
+    padding-bottom: 10px;
+  }
+`;
 
 export const Form = styled.form`
   display: flex;
