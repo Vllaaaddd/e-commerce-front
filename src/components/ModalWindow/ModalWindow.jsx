@@ -9,15 +9,15 @@ const styles = {
 };
 
 const ModalWindow = () => {
-  const [isLoginModal, setLoginModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const [component, setComponent] = useState('Login');
 
   const handleClick = () => {
-    setLoginModal(true);
+    setIsModal(true);
   };
 
   const handleCancel = () => {
-    setLoginModal(false);
+    setIsModal(false);
     setComponent('Login');
   };
 
@@ -33,7 +33,7 @@ const ModalWindow = () => {
     <div>
       <LoginOutlined onClick={() => handleClick()} style={styles.loginOutlined} />
 
-      <Modal title={component} visible={isLoginModal} onCancel={() => handleCancel()} footer={null}>
+      <Modal title={component} visible={isModal} onCancel={() => handleCancel()} footer={null}>
         <div>
           {component === 'Login' && <LoginForm handleVisibility={change} />}
           {component === 'Registration' && <RegistrationForm handleVisibility={change} />}
