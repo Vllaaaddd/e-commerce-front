@@ -6,7 +6,7 @@ import { LoginOutlined } from "@ant-design/icons";
 
 const ModalWindow = () => {
   const [isLoginModal, setLoginModal] = useState(false);
-  const [isComponent, setComponent] = useState("Login");
+  const [component, setComponent] = useState("Login");
 
   const handleClick = () => {
     setLoginModal(true);
@@ -18,7 +18,7 @@ const ModalWindow = () => {
   };
 
   const change = () => {
-    if (isComponent === "Login") {
+    if (component === "Login") {
       setComponent("Registration");
     } else {
       setComponent("Login");
@@ -33,14 +33,14 @@ const ModalWindow = () => {
       />
 
       <Modal
-        title={isComponent}
+        title={component}
         visible={isLoginModal}
         onCancel={() => handleCancel()}
         footer={null}
       >
         <div>
-          {isComponent === "Login" && <LoginForm visibility={change} />}
-          {isComponent === "Registration" && (
+          {component === "Login" && <LoginForm visibility={change} />}
+          {component === "Registration" && (
             <RegistrationForm visibility={change} />
           )}
         </div>
