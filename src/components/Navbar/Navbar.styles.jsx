@@ -1,26 +1,32 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 50px;
-  padding: 12px 30px;
+  height: 60px;
+  padding: 18px 30px;
   background-color: var(--secondary);
-`;
-
-export const Wrapper = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
 export const Left = styled.div`
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 20px;
 `;
 
 export const Name = styled.span`
-  margin: 10px;
+  margin: 0px 10px 0px 0px;
   color: var(--main);
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 export const Catalog = styled.button`
+  display: flex;
+  flex-direction: row;
   padding: 5px;
   color: var(--main);
   background-color: RGB(78, 76, 76);
@@ -64,11 +70,13 @@ export const Search = styled.button`
 
 export const Right = styled.div`
   flex: 1;
-
+  margin-top: 12px;
   ul {
+    margin-left: 20px;
     display: flex;
     align-items: center;
     list-style: none;
+    justify-content: flex-start;
     padding-inline-start: 0px;
   }
   li {
@@ -78,9 +86,8 @@ export const Right = styled.div`
 
 export const Language = styled.div`
   display: flex;
-  font-size: 10px;
+  font-size: 13px;
   align-items: center;
-  padding: 3px 0px 0px 0px;
 
   a {
     color: var(--main);

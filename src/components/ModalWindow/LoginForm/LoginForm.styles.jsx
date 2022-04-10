@@ -1,23 +1,38 @@
-import Modal from "antd/lib/modal/Modal";
-import styled from "styled-components";
+import { Checkbox } from 'antd';
+import styled from 'styled-components';
 
 export const Container = styled.div``;
+
+export const Remember = styled(Checkbox)`
+  .ant-checkbox .ant-checkbox-inner {
+    background-color: white;
+    border-color: gray;
+    transform: scale(0.8);
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: green;
+    border-color: gray;
+
+    :hover {
+      background-color: white;
+    }
+  }
+  .ant-checkbox + span {
+    font-size: 10px;
+    display: inline;
+    padding-bottom: 10px;
+  }
+`;
 
 export const Form = styled.form`
   display: flex;
   a {
     color: #3e77aa;
     transition: 0.2s ease-in-out;
-
     &:hover {
       color: #d35232;
     }
-  }
-
-  p {
-    font-size: 10px;
-    color: red;
-    margin: -3px 0px 3px 0px;
   }
 `;
 
@@ -54,11 +69,6 @@ export const Fieldset = styled.div`
   justify-content: center;
 `;
 
-export const Acception = styled.span`
-  font-size: 10px;
-  margin: 10px 0px;
-`;
-
 export const Submit = styled.button`
   font-size: 14px;
   color: white;
@@ -66,12 +76,11 @@ export const Submit = styled.button`
   min-height: 35px;
   align-items: center;
   justify-content: center;
-  background-color: var(--button);
+  background-color: #00a046;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
-
   &:hover {
     background-color: #13b85a;
   }
@@ -88,7 +97,7 @@ export const Divider = styled.span`
   left: 100%;
   top: 50%;
   font-size: 12px;
-  background-color: var(--main);
+  background-color: white;
   transform: translate(-50%, -50%);
   color: #a6a5a5;
 `;
