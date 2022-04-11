@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Container,
   Form,
@@ -6,13 +5,13 @@ import {
   Label,
   Left,
   Right,
-  Submit,
   Rlink,
   Fieldset,
   Remember,
   Divider
 } from './LoginForm.styles';
 import { EyeOutlined } from '@ant-design/icons/lib/icons';
+import SubmitBtn from '../SubmitBtn';
 import ModalSocial from '../Social';
 
 const styles = {
@@ -21,7 +20,7 @@ const styles = {
   }
 };
 
-const LoginForm = ({ handleVisibility }) => {
+const LoginForm = ({ handleFormTypeChange }) => {
   return (
     <Container>
       <Form>
@@ -32,16 +31,15 @@ const LoginForm = ({ handleVisibility }) => {
           <Label>Пароль</Label>
           <Fieldset>
             <Input />
-
             <EyeOutlined style={styles.eye} />
           </Fieldset>
 
           <Remember>Запомнить меня</Remember>
 
-          <Submit>Войти</Submit>
+          <SubmitBtn title={'Войти'} />
 
           <Rlink>
-            <a onClick={() => handleVisibility()} target='_blank'>
+            <a onClick={() => handleFormTypeChange()} target='_blank'>
               Зарегестрироваться
             </a>
           </Rlink>

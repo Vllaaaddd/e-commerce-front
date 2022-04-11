@@ -1,42 +1,37 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { useState } from 'react';
+import { Modal } from 'antd';
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
-import { LoginOutlined } from '@ant-design/icons';
 
-const styles = {
-  loginOutlined: { color: 'white', cursor: 'pointer', transform: 'scale(1.32)' }
-};
-
-const ModalWindow = () => {
-  const [isModal, setIsModal] = useState(false);
-  const [component, setComponent] = useState('Login');
-
-  const handleClick = () => {
-    setIsModal(true);
-  };
+const ModalWindow = ({ isModalWindowActive, setIsModalWindowActive }) => {
+  const [currentFormType, setCurrentFormType] = useState('Login');
 
   const handleCancel = () => {
-    setIsModal(false);
-    setComponent('Login');
+    setIsModalWindowActive(false);
+    setCurrentFormType('Login');
   };
 
-  const change = () => {
-    if (component === 'Login') {
-      setComponent('Registration');
+  const handleFormTypeChange = () => {
+    if (currentFormType === 'Login') {
+      setCurrentFormType('Registration');
     } else {
-      setComponent('Login');
+      setCurrentFormType('Login');
     }
   };
 
   return (
     <div>
-      <LoginOutlined onClick={() => handleClick()} style={styles.loginOutlined} />
-
-      <Modal title={component} visible={isModal} onCancel={() => handleCancel()} footer={null}>
+      <Modal
+        title={currentFormType}
+        visible={isModalWindowActive}
+        onCancel={handleCancel}
+        footer={null}
+      >
         <div>
-          {component === 'Login' && <LoginForm handleVisibility={change} />}
-          {component === 'Registration' && <RegistrationForm handleVisibility={change} />}
+          {currentFormType === 'Login' && <LoginForm handleFormTypeChange={handleFormTypeChange} />}
+          {currentFormType === 'Registration' && (
+            <RegistrationForm handleFormTypeChange={handleFormTypeChange} />
+          )}
         </div>
       </Modal>
     </div>

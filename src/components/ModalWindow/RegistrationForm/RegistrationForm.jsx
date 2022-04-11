@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Acception,
   Container,
@@ -7,25 +6,27 @@ import {
   Label,
   Left,
   Right,
-  Submit,
   Rlink,
   Fieldset,
   Divider
 } from './RegistrationForm.styles';
 import { EyeOutlined } from '@ant-design/icons/lib/icons';
 import ModalSocial from '../Social';
+import SubmitBtn from '../SubmitBtn';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { schema, defaultValues } from '../../../validators/registration';
-import { registration } from './constants';
 
-const RegistrationForm = ({ handleVisibility }) => {
+const styles = {
+  eyeOutlined: { margin: '0 0 3% 3%' }
+};
+
+const RegistrationForm = ({ handleFormTypeChange }) => {
   const {
     handleSubmit,
     control,
-    formState: { errors },
-    reset
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues
@@ -94,7 +95,7 @@ const RegistrationForm = ({ handleVisibility }) => {
                 </>
               )}
             />
-            <EyeOutlined style={{ margin: '0 0 3% 3%' }} />
+            <EyeOutlined style={styles.eyeOutlined} />
           </Fieldset>
           {errors.password?.message && <p>{errors.password?.message}</p>}
           <Acception>
@@ -104,9 +105,9 @@ const RegistrationForm = ({ handleVisibility }) => {
               положения о сборе и защите персональных данных и пользовательским соглашением
             </a>
           </Acception>
-          <Submit type='submit'>Зарегистрироваться</Submit>
+          <SubmitBtn title={'Зарегистрироваться'} />
           <Rlink>
-            <a onClick={() => handleVisibility()} target='_blank'>
+            <a onClick={() => handleFormTypeChange()} target='_blank'>
               Я уже зарегестрирован
             </a>
           </Rlink>
