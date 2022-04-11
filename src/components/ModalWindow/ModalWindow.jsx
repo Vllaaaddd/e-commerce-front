@@ -28,9 +28,9 @@ const ModalWindow = ({ isModalWindowActive, setIsModalWindowActive }) => {
         footer={null}
       >
         <div>
-          {currentFormType === 'Login' && <LoginForm handleVisibility={handleFormTypeChange} />}
+          {currentFormType === 'Login' && <LoginForm handleFormTypeChange={handleFormTypeChange} />}
           {currentFormType === 'Registration' && (
-            <RegistrationForm handleVisibility={handleFormTypeChange} />
+            <RegistrationForm handleFormTypeChange={handleFormTypeChange} />
           )}
         </div>
       </Modal>
