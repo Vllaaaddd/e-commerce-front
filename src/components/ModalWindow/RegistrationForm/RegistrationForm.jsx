@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Acception,
   Container,
@@ -7,7 +6,6 @@ import {
   Label,
   Left,
   Right,
-  Submit,
   Rlink,
   Fieldset,
   Divider
@@ -19,14 +17,16 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { schema, defaultValues } from '../../../validators/registration';
-import { registration } from './constants';
+
+const styles = {
+  eyeOutlined: { margin: '0 0 3% 3%' }
+};
 
 const RegistrationForm = ({ handleFormTypeChange }) => {
   const {
     handleSubmit,
     control,
-    formState: { errors },
-    reset
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues
@@ -95,7 +95,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
                 </>
               )}
             />
-            <EyeOutlined style={{ margin: '0 0 3% 3%' }} />
+            <EyeOutlined style={styles.eyeOutlined} />
           </Fieldset>
           {errors.password?.message && <p>{errors.password?.message}</p>}
           <Acception>
