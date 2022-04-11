@@ -5,7 +5,6 @@ import {
   Label,
   Left,
   Right,
-  Submit,
   Rlink,
   Fieldset,
   Remember,
