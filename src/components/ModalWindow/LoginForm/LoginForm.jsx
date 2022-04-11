@@ -13,6 +13,7 @@ import {
 import { EyeOutlined } from '@ant-design/icons/lib/icons';
 import SubmitBtn from '../SubmitBtn';
 import ModalSocial from '../Social';
+import { useTranslation } from 'react-i18next';
 
 const styles = {
   eye: {
@@ -21,29 +22,30 @@ const styles = {
 };
 
 const LoginForm = ({ handleFormTypeChange }) => {
+  const { t } = useTranslation();
   return (
     <Container>
       <Form>
         <Left>
-          <Label>Эл. почта или телефон</Label>
+          <Label>{t('login.emailOrPhone')}</Label>
           <Input />
 
-          <Label>Пароль</Label>
+          <Label>{t('login.password')}</Label>
           <Fieldset>
             <Input />
             <EyeOutlined style={styles.eye} />
           </Fieldset>
 
-          <Remember>Запомнить меня</Remember>
+          <Remember>{t('login.rememberMe')}</Remember>
 
-          <SubmitBtn title={'Войти'} />
+          <SubmitBtn title={t('login.submitBtn')} />
 
           <Rlink>
             <a onClick={() => handleFormTypeChange()} target='_blank'>
-              Зарегестрироваться
+              {t('login.register')}
             </a>
           </Rlink>
-          <Divider>или</Divider>
+          <Divider>{t('login.or')}</Divider>
         </Left>
         <Right>
           <ModalSocial />

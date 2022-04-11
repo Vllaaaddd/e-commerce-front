@@ -14,6 +14,7 @@ import {
   Language
 } from './Navbar.styles';
 import Logo from './Logo';
+import { useTranslation } from 'react-i18next';
 
 const styles = {
   menuOutlined: {
@@ -35,6 +36,11 @@ const styles = {
 
 const Navbar = () => {
   const [isModalWindowActive, setIsModalWindowActive] = useState(false);
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+  };
 
   return (
     <Container>
@@ -55,8 +61,8 @@ const Navbar = () => {
         <ul>
           <li>
             <Language>
-              <a>RU</a>
-              <a>UA</a>
+              <a onClick={() => changeLanguage('en')}>EN</a>
+              <a onClick={() => changeLanguage('ua')}>UA</a>
             </Language>
           </li>
           <li>
