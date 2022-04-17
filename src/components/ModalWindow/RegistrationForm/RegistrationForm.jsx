@@ -34,7 +34,6 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
 
   async function onSubmit(data) {
     const responce = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
-    console.log(responce.data);
   }
   return (
     <Container>
