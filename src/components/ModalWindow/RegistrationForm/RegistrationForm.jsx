@@ -19,12 +19,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import useAxios from '../../../hooks/use-axios';
 import { userService } from '../../../services/user-service';
 import { schema, defaultValues } from '../../../validators/registration';
+import { useTranslation } from 'react-i18next';
 
 const styles = {
   eyeOutlined: { margin: '0 0 3% 3%' }
 };
 
 const RegistrationForm = ({ handleFormTypeChange }) => {
+  const { t } = useTranslation();
   const [userData, setUserData] = useState({});
   console.log(userData);
   const { response, loading } = useAxios({
@@ -57,7 +59,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Left>
-          <Label>Имя</Label>
+          <Label>{t('registration.name')}</Label>
           <Controller
             control={control}
             name='firstName'
@@ -68,7 +70,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
               </>
             )}
           />
-          <Label>Фамилия</Label>
+          <Label>{t('registration.surname')}</Label>
           <Controller
             control={control}
             name='lastName'
@@ -79,7 +81,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
               </>
             )}
           />
-          <Label>Номер телефона</Label>
+          <Label>{t('registration.phone')}</Label>
           <Controller
             control={control}
             name='phone'
@@ -90,7 +92,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
               </>
             )}
           />
-          <Label>Эл. почта</Label>
+          <Label>{t('registration.email')}</Label>
           <Controller
             control={control}
             name='email'
@@ -101,7 +103,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
               </>
             )}
           />
-          <Label>Придумайте пароль</Label>
+          <Label>{t('registration.createPassword')}</Label>
           <Fieldset>
             <Controller
               control={control}
@@ -116,19 +118,18 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
           </Fieldset>
           {errors.password?.message && <p>{errors.password?.message}</p>}
           <Acception>
-            Регистрируясь, вы соглашаетесь с условиями
             <a target='_blank' href='https://rozetka.com.ua/pages/privacy/'>
               {' '}
-              положения о сборе и защите персональных данных и пользовательским соглашением
+              {t('registration.terms')}
             </a>
           </Acception>
-          <SubmitBtn title={'Зарегистрироваться'} />
+          <SubmitBtn title={t('registration.submitBtn')} />
           <Rlink>
             <a onClick={() => handleFormTypeChange()} target='_blank'>
-              Я уже зарегестрирован
+              {t('registration.alreadyRegistered')}
             </a>
           </Rlink>
-          <Divider>или</Divider>
+          <Divider>{t('registration.or')}</Divider>
         </Left>
         <Right>
           <ModalSocial />

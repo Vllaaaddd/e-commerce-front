@@ -1,9 +1,9 @@
 {
   "title": "Login",
-  "emailOrPhone": "email or phone",
-  "password": "password",
-  "rememberMe": "remember me",
-  "submitBtn": "login",
-  "register": "register",
+  "emailOrPhone": "Email or phone",
+  "password": "Password",
+  "rememberMe": "Remember me",
+  "submitBtn": "Login",
+  "register": "Registration",
   "or": "or"
 }

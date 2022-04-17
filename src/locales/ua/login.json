@@ -1,9 +1,9 @@
 {
   "title": "Логін",
-  "emailOrPhone": "почта або номер телефону",
-  "password": "пароль",
-  "rememberMe": "запам'ятати мене",
-  "submitBtn": "логін",
-  "register": "зареєструватися",
+  "emailOrPhone": "Пошта або номер телефону",
+  "password": "Пароль",
+  "rememberMe": "Запам'ятати мене",
+  "submitBtn": "Логін",
+  "register": "Зареєструватися",
   "or": "або"
 }

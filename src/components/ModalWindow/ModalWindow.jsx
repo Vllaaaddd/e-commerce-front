@@ -2,34 +2,37 @@ import { useState } from 'react';
 import { Modal } from 'antd';
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
+import { useTranslation } from 'react-i18next';
 
 const ModalWindow = ({ isModalWindowActive, setIsModalWindowActive }) => {
-  const [currentFormType, setCurrentFormType] = useState('Login');
-
+  const [currentFormType, setCurrentFormType] = useState('login.title');
+  const { t } = useTranslation();
   const handleCancel = () => {
     setIsModalWindowActive(false);
-    setCurrentFormType('Login');
+    setCurrentFormType('login.title');
   };
 
   const handleFormTypeChange = () => {
-    if (currentFormType === 'Login') {
-      setCurrentFormType('Registration');
+    if (currentFormType === 'login.title') {
+      setCurrentFormType('registration.title');
     } else {
-      setCurrentFormType('Login');
+      setCurrentFormType('login.title');
     }
   };
 
   return (
     <div>
       <Modal
-        title={currentFormType}
+        title={t(currentFormType)}
         visible={isModalWindowActive}
         onCancel={handleCancel}
         footer={null}
       >
         <div>
-          {currentFormType === 'Login' && <LoginForm handleFormTypeChange={handleFormTypeChange} />}
-          {currentFormType === 'Registration' && (
+          {currentFormType === 'login.title' && (
+            <LoginForm handleFormTypeChange={handleFormTypeChange} />
+          )}
+          {currentFormType === 'registration.title' && (
             <RegistrationForm handleFormTypeChange={handleFormTypeChange} />
           )}
         </div>
