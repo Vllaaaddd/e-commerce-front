@@ -1,21 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
-const defaultProps = {
-  data: {},
-  config: {}
-};
-
-const useAxios = ({
-  service,
-  data = defaultProps.data,
-  config = defaultProps.config,
-  fetchOnMount = true
-}) => {
+const useAxios = () => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(fetchOnMount);
+  const [loading, setLoading] = useState(false);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async ({ service, data = {}, config = {} }) => {
     try {
       setLoading(true);
       const res = await service(data, config);
@@ -26,13 +16,7 @@ const useAxios = ({
     } finally {
       setLoading(false);
     }
-  }, [service, data, config]);
-
-  useEffect(() => {
-    if (fetchOnMount) {
-      fetchData();
-    }
-  }, [fetchData, fetchOnMount]);
+  }, []);
 
   return { response, error, loading, fetchData };
 };

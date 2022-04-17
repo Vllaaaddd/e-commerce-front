@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Acception,
   Container,
@@ -27,13 +27,7 @@ const styles = {
 
 const RegistrationForm = ({ handleFormTypeChange }) => {
   const { t } = useTranslation();
-  const [userData, setUserData] = useState({});
-  console.log(userData);
-  const { response, loading } = useAxios({
-    service: userService.register,
-    data: userData,
-    fetchOnMount: false
-  });
+  const { response, loading, fetchData } = useAxios();
 
   const {
     handleSubmit,
@@ -53,7 +47,7 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
       phone: '+380962997523',
       email: 'lavados@gmail.com'
     };
-    setUserData(someData);
+    fetchData({ service: userService.register, data: someData });
   }
   return (
     <Container>
