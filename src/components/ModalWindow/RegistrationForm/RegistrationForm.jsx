@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   Acception,
   Container,
@@ -14,12 +13,15 @@ import {
 import { EyeOutlined } from '@ant-design/icons/lib/icons';
 import ModalSocial from '../Social';
 import SubmitBtn from '../SubmitBtn';
+import Loader from '../../Loader';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useAxios from '../../../hooks/use-axios';
 import { userService } from '../../../services/user-service';
 import { schema, defaultValues } from '../../../validators/registration';
 import { useTranslation } from 'react-i18next';
+import { setToLocalStorage } from '../../../services/local-storage-service';
+import { USER_TOKENS, USER_ID } from '../../../constants/config';
 
 const styles = {
   eyeOutlined: { margin: '0 0 3% 3%' }
@@ -27,8 +29,7 @@ const styles = {
 
 const RegistrationForm = ({ handleFormTypeChange }) => {
   const { t } = useTranslation();
-  const { response, loading, fetchData } = useAxios();
-
+  const { response, loading, error, fetchData } = useAxios();
   const {
     handleSubmit,
     control,
@@ -39,96 +40,112 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
   });
 
   async function onSubmit(data) {
-    const someData = {
-      login: 'strawberry',
-      password: 'qwerty123',
-      name: 'Vladik',
-      surname: 'Lavandos',
-      phone: '+380962997523',
-      email: 'lavados@gmail.com'
-    };
-    fetchData({ service: userService.register, data: someData });
+    fetchData({ service: userService.register, data }).then(() => {
+      if (!error) {
+        const { accessToken, refreshToken, customer } = response.data;
+        setToLocalStorage(USER_TOKENS.ACCESS_TOKEN, accessToken);
+        setToLocalStorage(USER_TOKENS.REFRESH_TOKEN, refreshToken);
+        setToLocalStorage(USER_ID, customer.id);
+      }
+    });
   }
+
   return (
     <Container>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Left>
-          <Label>{t('registration.name')}</Label>
-          <Controller
-            control={control}
-            name='firstName'
-            render={({ field }) => (
-              <>
-                <Input {...field}></Input>
-                {errors.firstName?.message && <p>{errors.firstName?.message}</p>}
-              </>
-            )}
-          />
-          <Label>{t('registration.surname')}</Label>
-          <Controller
-            control={control}
-            name='lastName'
-            render={({ field }) => (
-              <>
-                <Input {...field}></Input>
-                {errors.lastName?.message && <p>{errors.lastName?.message}</p>}
-              </>
-            )}
-          />
-          <Label>{t('registration.phone')}</Label>
-          <Controller
-            control={control}
-            name='phone'
-            render={({ field }) => (
-              <>
-                <Input {...field}></Input>
-                {errors.phone?.message && <p>{errors.phone?.message}</p>}
-              </>
-            )}
-          />
-          <Label>{t('registration.email')}</Label>
-          <Controller
-            control={control}
-            name='email'
-            render={({ field }) => (
-              <>
-                <Input {...field}></Input>
-                {errors.email?.message && <p>{errors.email?.message}</p>}
-              </>
-            )}
-          />
-          <Label>{t('registration.createPassword')}</Label>
-          <Fieldset>
+      <Loader loading={loading}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Left>
+            <Label>{t('registration.login')}</Label>
             <Controller
               control={control}
-              name='password'
+              name='login'
               render={({ field }) => (
                 <>
                   <Input {...field}></Input>
+                  {errors.login?.message && <p>{t(errors.login?.message)}</p>}
+                  {error?.response?.data?.errors?.login && <p>{t('registration.loginUnique')}</p>}
                 </>
               )}
             />
-            <EyeOutlined style={styles.eyeOutlined} />
-          </Fieldset>
-          {errors.password?.message && <p>{errors.password?.message}</p>}
-          <Acception>
-            <a target='_blank' href='https://rozetka.com.ua/pages/privacy/'>
-              {' '}
-              {t('registration.terms')}
-            </a>
-          </Acception>
-          <SubmitBtn title={t('registration.submitBtn')} />
-          <Rlink>
-            <a onClick={() => handleFormTypeChange()} target='_blank'>
-              {t('registration.alreadyRegistered')}
-            </a>
-          </Rlink>
-          <Divider>{t('registration.or')}</Divider>
-        </Left>
-        <Right>
-          <ModalSocial />
-        </Right>
-      </Form>
+            <Label>{t('registration.name')}</Label>
+            <Controller
+              control={control}
+              name='firstName'
+              render={({ field }) => (
+                <>
+                  <Input {...field}></Input>
+                  {errors.firstName?.message && <p>{t(errors.firstName?.message)}</p>}
+                </>
+              )}
+            />
+            <Label>{t('registration.surname')}</Label>
+            <Controller
+              control={control}
+              name='lastName'
+              render={({ field }) => (
+                <>
+                  <Input {...field}></Input>
+                  {errors.lastName?.message && <p>{t(errors.lastName?.message)}</p>}
+                </>
+              )}
+            />
+            <Label>{t('registration.phone')}</Label>
+            <Controller
+              control={control}
+              name='phone'
+              render={({ field }) => (
+                <>
+                  <Input {...field}></Input>
+                  {errors.phone?.message && <p>{t(errors.phone?.message)}</p>}
+                  {error?.response?.data?.errors?.phone && <p>{t('registration.phoneUnique')}</p>}
+                </>
+              )}
+            />
+            <Label>{t('registration.email')}</Label>
+            <Controller
+              control={control}
+              name='email'
+              render={({ field }) => (
+                <>
+                  <Input {...field}></Input>
+                  {errors.email?.message && <p>{t(errors.email?.message)}</p>}
+                  {error?.response?.data?.errors?.email && <p>{t('registration.emailUnique')}</p>}
+                </>
+              )}
+            />
+            <Label>{t('registration.createPassword')}</Label>
+            <Fieldset>
+              <Controller
+                control={control}
+                name='password'
+                render={({ field }) => (
+                  <>
+                    <Input {...field}></Input>
+                  </>
+                )}
+              />
+              <EyeOutlined style={styles.eyeOutlined} />
+            </Fieldset>
+            {errors.password?.message && <p>{t(errors.password?.message)}</p>}
+            <Acception>
+              <a target='_blank' href='https://rozetka.com.ua/pages/privacy/'>
+                {' '}
+                {t('registration.terms')}
+              </a>
+            </Acception>
+            <SubmitBtn title={t('registration.submitBtn')} />
+            <Rlink>
+              <a onClick={() => handleFormTypeChange()} target='_blank'>
+                {t('registration.alreadyRegistered')}
+              </a>
+            </Rlink>
+            <Divider>{t('registration.or')}</Divider>
+          </Left>
+          <Right>
+            <ModalSocial />
+          </Right>
+        </Form>
+      </Loader>
     </Container>
   );
 };
