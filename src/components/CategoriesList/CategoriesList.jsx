@@ -5,10 +5,11 @@ import { config } from './variables';
 
 const CategoriesList = () => {
   const [categoryItems, setCategoryItems] = useState([]);
-  const { response, loading } = useAxios({
-    service: categoryService.getByTypes,
-    config
-  });
+  const { response, loading, fetchData } = useAxios();
+
+  useEffect(() => {
+    fetchData({ service: categoryService.getByTypes, config });
+  }, [fetchData]);
 
   useEffect(() => {
     if (response) {
