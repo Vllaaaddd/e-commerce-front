@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Acception,
   Container,
@@ -15,7 +16,8 @@ import ModalSocial from '../Social';
 import SubmitBtn from '../SubmitBtn';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
+import useAxios from '../../../hooks/use-axios';
+import { userService } from '../../../services/user-service';
 import { schema, defaultValues } from '../../../validators/registration';
 
 const styles = {
@@ -23,6 +25,14 @@ const styles = {
 };
 
 const RegistrationForm = ({ handleFormTypeChange }) => {
+  const [userData, setUserData] = useState({});
+  console.log(userData);
+  const { response, loading } = useAxios({
+    service: userService.register,
+    data: userData,
+    fetchOnMount: false
+  });
+
   const {
     handleSubmit,
     control,
@@ -33,7 +43,15 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
   });
 
   async function onSubmit(data) {
-    const responce = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
+    const someData = {
+      login: 'strawberry',
+      password: 'qwerty123',
+      name: 'Vladik',
+      surname: 'Lavandos',
+      phone: '+380962997523',
+      email: 'lavados@gmail.com'
+    };
+    setUserData(someData);
   }
   return (
     <Container>
