@@ -2,7 +2,9 @@ import { E_COMMERCE, DEFAULT_LANGUAGE } from '../constants/config';
 
 export const clearLocalStorage = () => {
   const e_commerce = {
+    id: null,
     accessToken: null,
+    refreshToken: null,
     language: DEFAULT_LANGUAGE
   };
   localStorage.setItem(E_COMMERCE, JSON.stringify(e_commerce));

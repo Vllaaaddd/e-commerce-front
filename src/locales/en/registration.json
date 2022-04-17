@@ -1,5 +1,6 @@
 {
   "title": "Registration",
+  "login": "Login",
   "name": "Name",
   "surname": "Surname",
   "phone": "Phone",
@@ -8,5 +9,14 @@
   "terms": "By registering, you agree to the terms of the provision on the collection and protection of personal data and the user agreement",
   "submitBtn": "Register",
   "alreadyRegistered": "Already registered",
-  "or": "or"
+  "or": "or",
+  "loginRequired": "Enter login",
+  "firstNameRequired": "Enter your name",
+  "lastNameRequired": "Enter your surname",
+  "phoneRequired": "Enter your phone",
+  "emailRequired": "Enter your email",
+  "passwordRequired": "Enter password",
+  "loginUnique": "User with such login already exists",
+  "phoneUnique": "User with such phone already exists",
+  "emailUnique": "User with such email already exists"
 }

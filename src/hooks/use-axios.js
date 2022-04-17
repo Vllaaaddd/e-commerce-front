@@ -18,7 +18,7 @@ const useAxios = () => {
     }
   }, []);
 
-  return { response, error, loading, fetchData };
+  return { response, loading, error, fetchData };
 };
 
 export default useAxios;

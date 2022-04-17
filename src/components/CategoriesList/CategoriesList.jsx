@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from '../Loader';
 import useAxios from '../../hooks/use-axios';
 import { categoryService } from '../../services/category-service';
 import { config } from './variables';
@@ -19,11 +20,11 @@ const CategoriesList = () => {
 
   return (
     <div>
-      {loading ? (
-        <div>Loading</div>
-      ) : (
-        categoryItems.map((category) => <div key={category._id}>{category.name}</div>)
-      )}
+      <Loader loading={loading}>
+        {categoryItems.map((category) => (
+          <div key={category._id}>{category.name}</div>
+        ))}
+      </Loader>
     </div>
   );
 };
