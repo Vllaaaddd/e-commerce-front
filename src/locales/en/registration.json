@@ -1,0 +1,12 @@
+{
+  "title": "Registration",
+  "name": "Name",
+  "surname": "Surname",
+  "phone": "Phone",
+  "email": "Email",
+  "createPassword": "Create a password",
+  "terms": "By registering, you agree to the terms of the provision on the collection and protection of personal data and the user agreement",
+  "submitBtn": "Register",
+  "alreadyRegistered": "Already registered",
+  "or": "or"
+}
