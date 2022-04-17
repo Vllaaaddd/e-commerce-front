@@ -16,7 +16,6 @@ const CategoriesList = () => {
     }
   }, [response]);
 
-  console.log(categoryItems);
   return (
     <div>
       {loading ? (
