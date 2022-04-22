@@ -7,5 +7,8 @@ export const userService = {
   },
   login: (data, config) => {
     return request.post(URLs.customer.login, data);
+  },
+  refresh: (data, config) => {
+    return request.get(URLs.customer.refresh);
   }
 };
