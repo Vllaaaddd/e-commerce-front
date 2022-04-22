@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { AppstoreOutlined, MenuOutlined, ShoppingCartOutlined } from '@ant-design/icons/lib/icons';
+import {
+  AppstoreOutlined,
+  MenuOutlined,
+  ShoppingCartOutlined,
+  UserOutlined
+} from '@ant-design/icons/lib/icons';
 import ModalWindow from '../ModalWindow';
 import { LoginOutlined } from '@ant-design/icons';
 import {
@@ -15,6 +20,7 @@ import {
 } from './Navbar.styles';
 import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
+import useAuth from '../../hooks/use-auth';
 
 const styles = {
   menuOutlined: {
@@ -31,12 +37,14 @@ const styles = {
     cursor: 'pointer',
     transform: 'scale(1.5)'
   },
+  userOutlined: { color: 'white', cursor: 'pointer', transform: 'scale(1.32)' },
   loginOutlined: { color: 'white', cursor: 'pointer', transform: 'scale(1.32)' }
 };
 
 const Navbar = () => {
   const [isModalWindowActive, setIsModalWindowActive] = useState(false);
   const { i18n } = useTranslation();
+  const { isAuth } = useAuth();
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -66,10 +74,14 @@ const Navbar = () => {
             </Language>
           </li>
           <li>
-            <LoginOutlined
-              onClick={() => setIsModalWindowActive(true)}
-              style={styles.loginOutlined}
-            />
+            {isAuth ? (
+              <UserOutlined style={styles.userOutlined} />
+            ) : (
+              <LoginOutlined
+                onClick={() => setIsModalWindowActive(true)}
+                style={styles.loginOutlined}
+              />
+            )}
             <ModalWindow
               isModalWindowActive={isModalWindowActive}
               setIsModalWindowActive={setIsModalWindowActive}
