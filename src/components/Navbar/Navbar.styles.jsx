@@ -56,6 +56,7 @@ export const Input = styled.input`
   border: none;
   border-radius: 4px;
   flex: 8;
+  outline: none;
 `;
 
 export const Search = styled.button`
