@@ -34,6 +34,11 @@ export const Form = styled.form`
       color: #d35232;
     }
   }
+  p {
+    font-size: 10px;
+    color: red;
+    margin: -3px 0px 3px 0px;
+  }
 `;
 
 export const Left = styled.div`

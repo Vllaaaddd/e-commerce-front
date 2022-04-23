@@ -49,12 +49,11 @@ const RegistrationForm = ({ handleCancel, handleFormTypeChange }) => {
 
   useEffect(() => {
     if (response) {
-      const { accessToken, refreshToken, customer } = response.data;
+      const { accessToken, customer } = response.data;
 
       userStore.setAuth(true);
 
       setToLocalStorage(USER_TOKENS.ACCESS_TOKEN, accessToken);
-      setToLocalStorage(USER_TOKENS.REFRESH_TOKEN, refreshToken);
       setToLocalStorage(USER_ID, customer.id);
 
       handleCancel();
