@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Context, userStore } from './context';
 import 'antd/dist/antd.min.css';
 import './i18n';
 import { clearLocalStorage } from './services/local-storage-service';
@@ -11,7 +12,11 @@ if (!localStorage.getItem(E_COMMERCE)) {
 }
 
 ReactDOM.render(
-  <App />,
+  <React.StrictMode>
+    <Context.Provider value={{ userStore }}>
+      <App />
+    </Context.Provider>
+  </React.StrictMode>,
 
   document.getElementById('root')
 );
