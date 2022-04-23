@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import { routes } from '../../constants/routes';
+import { routes } from '../../../constants/routes';
 
-import Home from '../../pages/Home';
-import NotFound from '../../pages/NotFound';
+import Home from '../../../pages/Home';
+import NotFound from '../../../pages/NotFound';
 
-const RoutesLayout = () => {
+const AppMain = () => {
   return (
     <Routes>
       <Route path={routes.home} element={<Home />} />
@@ -13,4 +13,4 @@ const RoutesLayout = () => {
   );
 };
 
-export default RoutesLayout;
+export default AppMain;

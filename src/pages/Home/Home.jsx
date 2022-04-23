@@ -1,4 +1,4 @@
-import HomeSideMenu from '../../components/HomeSideMenu';
+import HomeSideMenu from './HomeSideMenu';
 import Navbar from '../../components/Navbar';
 
 const Home = () => {
