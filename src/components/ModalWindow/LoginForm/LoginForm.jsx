@@ -1,3 +1,4 @@
+import { useEffect, useContext } from 'react';
 import {
   Container,
   Form,
@@ -14,43 +15,100 @@ import { EyeOutlined } from '@ant-design/icons/lib/icons';
 import SubmitBtn from '../SubmitBtn';
 import ModalSocial from '../Social';
 import { useTranslation } from 'react-i18next';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema, defaultValues } from '../../../validators/login';
+import { userService } from '../../../services/user-service';
+import { setToLocalStorage } from '../../../services/local-storage-service';
+import { USER_TOKENS, USER_ID } from '../../../constants/config';
+import { Context } from '../../../context';
+import useAxios from '../../../hooks/use-axios';
+import Loader from '../../Loader';
 
 const styles = {
-  eye: {
+  eyeOutlined: {
     margin: '0 0 3% 3%'
   }
 };
 
-const LoginForm = ({ handleFormTypeChange }) => {
+const LoginForm = ({ handleCancel, handleFormTypeChange }) => {
+  const { userStore } = useContext(Context);
   const { t } = useTranslation();
+  const { response, loading, error, fetchData } = useAxios();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues
+  });
+
+  async function onSubmit(data) {
+    fetchData({ service: userService.login, data });
+  }
+
+  useEffect(() => {
+    if (response) {
+      const { accessToken, customer } = response.data;
+
+      userStore.setAuth(true);
+
+      setToLocalStorage(USER_TOKENS.ACCESS_TOKEN, accessToken);
+      setToLocalStorage(USER_ID, customer.id);
+
+      handleCancel();
+    }
+  }, [response, userStore, handleCancel]);
+
   return (
     <Container>
-      <Form>
-        <Left>
-          <Label>{t('login.emailOrPhone')}</Label>
-          <Input />
+      <Loader loading={loading}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Left>
+            <Label>{t('login.emailOrPhone')}</Label>
+            <Controller
+              control={control}
+              name='login'
+              render={({ field }) => (
+                <>
+                  <Input {...field}></Input>
+                  {errors.login?.message && <p>{t(errors.login?.message)}</p>}
+                </>
+              )}
+            />
 
-          <Label>{t('login.password')}</Label>
-          <Fieldset>
-            <Input />
-            <EyeOutlined style={styles.eye} />
-          </Fieldset>
+            <Label>{t('login.password')}</Label>
+            <Fieldset>
+              <Controller
+                control={control}
+                name='password'
+                render={({ field }) => (
+                  <>
+                    <Input {...field}></Input>
+                  </>
+                )}
+              />
+              <EyeOutlined style={styles.eyeOutlined} />
+            </Fieldset>
+            {errors.password?.message && <p>{t(errors.password?.message)}</p>}
 
-          <Remember>{t('login.rememberMe')}</Remember>
+            <Remember>{t('login.rememberMe')}</Remember>
 
-          <SubmitBtn title={t('login.submitBtn')} />
+            <SubmitBtn title={t('login.submitBtn')} />
 
-          <Rlink>
-            <a onClick={() => handleFormTypeChange()} target='_blank'>
-              {t('login.register')}
-            </a>
-          </Rlink>
-          <Divider>{t('login.or')}</Divider>
-        </Left>
-        <Right>
-          <ModalSocial />
-        </Right>
-      </Form>
+            <Rlink>
+              <a onClick={() => handleFormTypeChange()} target='_blank'>
+                {t('login.register')}
+              </a>
+            </Rlink>
+            <Divider>{t('login.or')}</Divider>
+          </Left>
+          <Right>
+            <ModalSocial />
+          </Right>
+        </Form>
+      </Loader>
     </Container>
   );
 };
