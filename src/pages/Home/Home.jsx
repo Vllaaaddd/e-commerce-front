@@ -1,11 +1,11 @@
-import CategoriesList from '../../components/CategoriesList/CategoriesList';
+import HomeSideMenu from '../../components/HomeSideMenu';
 import Navbar from '../../components/Navbar';
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      <CategoriesList />
+      <HomeSideMenu />
     </div>
   );
 };
