@@ -1,4 +1,3 @@
-import Modal from 'antd/lib/modal/Modal';
 import styled from 'styled-components';
 
 export const Container = styled.div``;
