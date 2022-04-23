@@ -6,6 +6,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-height: 450px;
 `;
 
 export const CategoryWrapper = styled.div`

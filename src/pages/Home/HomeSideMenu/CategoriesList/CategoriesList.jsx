@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Wrapper, Content, CategoryWrapper, IconWrapper } from './CategoriesList.styles';
-import Loader from '../Loader';
-import useAxios from '../../hooks/use-axios';
-import { categoryService } from '../../services/category-service';
+import Loader from '../../../../components/Loader';
+import useAxios from '../../../../hooks/use-axios';
+import { categoryService } from '../../../../services/category-service';
 import { config } from './variables';
 import { Icon } from '@iconify/react';
 
@@ -44,7 +44,6 @@ const CategoriesList = () => {
         <Content>
           {categoryItems.map((category, index) => (
             <CategoryWrapper key={category._id}>
-              {console.log(index)}
               <IconWrapper>{icons[index]}</IconWrapper>
               <span>{category.name}</span>
             </CategoryWrapper>

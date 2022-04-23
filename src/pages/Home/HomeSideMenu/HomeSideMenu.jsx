@@ -1,5 +1,5 @@
 import { Wrapper, Content } from './HomeSideMenu.styles';
-import CategoriesList from '../CategoriesList/CategoriesList';
+import CategoriesList from './CategoriesList';
 
 const HomeSideMenu = () => {
   return (
