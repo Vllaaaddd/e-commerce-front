@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   AppstoreOutlined,
   MenuOutlined,
@@ -20,7 +20,8 @@ import {
 } from './Navbar.styles';
 import Logo from './Logo';
 import { useTranslation } from 'react-i18next';
-import useAuth from '../../hooks/use-auth';
+import { Context } from '../../context';
+import { observer } from 'mobx-react-lite';
 
 const styles = {
   menuOutlined: {
@@ -43,8 +44,8 @@ const styles = {
 
 const Navbar = () => {
   const [isModalWindowActive, setIsModalWindowActive] = useState(false);
+  const { userStore } = useContext(Context);
   const { i18n } = useTranslation();
-  const { isAuth } = useAuth();
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -74,7 +75,7 @@ const Navbar = () => {
             </Language>
           </li>
           <li>
-            {isAuth ? (
+            {userStore.isAuth ? (
               <UserOutlined style={styles.userOutlined} />
             ) : (
               <LoginOutlined
@@ -96,4 +97,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default observer(Navbar);

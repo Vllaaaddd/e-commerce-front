@@ -3,6 +3,7 @@ import { USER_TOKENS } from '../constants/config';
 import { getFromLocalStorage } from '../services/local-storage-service';
 
 const request = axios.create({
+  withCredentials: true,
   baseURL: process.env.REACT_APP_BACK_END_URL
 });
 

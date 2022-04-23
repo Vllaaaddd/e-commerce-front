@@ -33,7 +33,10 @@ const ModalWindow = ({ isModalWindowActive, setIsModalWindowActive }) => {
             <LoginForm handleFormTypeChange={handleFormTypeChange} />
           )}
           {currentFormType === 'registration.title' && (
-            <RegistrationForm handleFormTypeChange={handleFormTypeChange} />
+            <RegistrationForm
+              handleCancel={handleCancel}
+              handleFormTypeChange={handleFormTypeChange}
+            />
           )}
         </div>
       </Modal>

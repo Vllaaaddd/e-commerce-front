@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react';
 import {
   Acception,
   Container,
@@ -22,12 +23,15 @@ import { schema, defaultValues } from '../../../validators/registration';
 import { useTranslation } from 'react-i18next';
 import { setToLocalStorage } from '../../../services/local-storage-service';
 import { USER_TOKENS, USER_ID } from '../../../constants/config';
+import { Context } from '../../../context';
+import { observer } from 'mobx-react-lite';
 
 const styles = {
   eyeOutlined: { margin: '0 0 3% 3%' }
 };
 
-const RegistrationForm = ({ handleFormTypeChange }) => {
+const RegistrationForm = ({ handleCancel, handleFormTypeChange }) => {
+  const { userStore } = useContext(Context);
   const { t } = useTranslation();
   const { response, loading, error, fetchData } = useAxios();
   const {
@@ -40,15 +44,22 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
   });
 
   async function onSubmit(data) {
-    fetchData({ service: userService.register, data }).then(() => {
-      if (!error) {
-        const { accessToken, refreshToken, customer } = response.data;
-        setToLocalStorage(USER_TOKENS.ACCESS_TOKEN, accessToken);
-        setToLocalStorage(USER_TOKENS.REFRESH_TOKEN, refreshToken);
-        setToLocalStorage(USER_ID, customer.id);
-      }
-    });
+    fetchData({ service: userService.register, data });
   }
+
+  useEffect(() => {
+    if (response) {
+      const { accessToken, refreshToken, customer } = response.data;
+
+      userStore.setAuth(true);
+
+      setToLocalStorage(USER_TOKENS.ACCESS_TOKEN, accessToken);
+      setToLocalStorage(USER_TOKENS.REFRESH_TOKEN, refreshToken);
+      setToLocalStorage(USER_ID, customer.id);
+
+      handleCancel();
+    }
+  }, [response, userStore, handleCancel]);
 
   return (
     <Container>
@@ -150,4 +161,4 @@ const RegistrationForm = ({ handleFormTypeChange }) => {
   );
 };
 
-export default RegistrationForm;
+export default observer(RegistrationForm);
