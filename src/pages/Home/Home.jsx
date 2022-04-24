@@ -1,12 +1,13 @@
+import { Wrapper } from './Home.styles';
 import HomeSideMenu from './HomeSideMenu';
-import Navbar from '../../components/Navbar';
+import HomeMainContent from './HomeMainContent';
 
 const Home = () => {
   return (
-    <div>
-      <Navbar />
+    <Wrapper>
       <HomeSideMenu />
-    </div>
+      <HomeMainContent />
+    </Wrapper>
   );
 };
 
