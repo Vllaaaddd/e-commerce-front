@@ -12,11 +12,11 @@ export default class UserStore {
     makeAutoObservable(this);
   }
 
-  setAuth(bool) {
+  setAuth(bool: boolean) {
     this.isAuth = bool;
   }
 
-  setLoading(bool) {
+  setLoading(bool: boolean) {
     this.isLoading = bool;
   }
 
@@ -28,7 +28,7 @@ export default class UserStore {
       setToLocalStorage(USER_TOKENS.ACCESS_TOKEN, accessToken);
       setToLocalStorage(USER_TOKENS.REFRESH_TOKEN, refreshToken);
       this.setAuth(true);
-    } catch (e) {
+    } catch (e: any) {
       console.log(e.response?.data?.message);
     } finally {
       this.setLoading(false);

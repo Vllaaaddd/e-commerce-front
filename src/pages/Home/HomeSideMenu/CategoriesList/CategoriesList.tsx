@@ -6,8 +6,10 @@ import { categoryService } from '../../../../services/category-service';
 import { config } from './variables';
 import { Icon } from '@iconify/react';
 
+type CategotyItemsType = [{ _id: string; name: string }];
+
 const CategoriesList = () => {
-  const [categoryItems, setCategoryItems] = useState([]);
+  const [categoryItems, setCategoryItems] = useState<CategotyItemsType | []>([]);
   const icons = [
     <Icon icon='ant-design:laptop-outlined' />,
     <Icon icon='bi:phone' />,
@@ -34,6 +36,7 @@ const CategoriesList = () => {
 
   useEffect(() => {
     if (response) {
+      console.log('Zalupa', response.data);
       setCategoryItems(response.data);
     }
   }, [response]);

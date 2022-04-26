@@ -47,7 +47,7 @@ const Navbar = () => {
   const { userStore } = useContext(Context);
   const { i18n } = useTranslation();
 
-  const changeLanguage = (lang) => {
+  const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
 
