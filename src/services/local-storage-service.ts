@@ -10,16 +10,16 @@ export const clearLocalStorage = () => {
   localStorage.setItem(E_COMMERCE, JSON.stringify(e_commerce));
 };
 
-export const getFromLocalStorage = (name) => {
-  const localObject = JSON.parse(localStorage.getItem(E_COMMERCE));
+export const getFromLocalStorage = (name: string) => {
+  const localObject = JSON.parse(localStorage.getItem(E_COMMERCE) || '');
   if (!localObject) {
     return null;
   }
   return localObject[name];
 };
 
-export const setToLocalStorage = (name, item) => {
-  const localObject = JSON.parse(localStorage.getItem(E_COMMERCE));
+export const setToLocalStorage = (name: string, item: string) => {
+  const localObject = JSON.parse(localStorage.getItem(E_COMMERCE) || '');
   localObject[name] = item;
   localStorage.setItem(E_COMMERCE, JSON.stringify(localObject));
 };

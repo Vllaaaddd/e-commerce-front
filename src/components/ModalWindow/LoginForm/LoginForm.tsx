@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, FC } from 'react';
 import {
   Container,
   Form,
@@ -17,7 +17,7 @@ import ModalSocial from '../Social';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema, defaultValues } from '../../../validators/login';
+import { schema, defaultValues, ILogin } from '../../../validators/login';
 import { userService } from '../../../services/user-service';
 import { setToLocalStorage } from '../../../services/local-storage-service';
 import { USER_TOKENS, USER_ID } from '../../../constants/config';
@@ -31,7 +31,12 @@ const styles = {
   }
 };
 
-const LoginForm = ({ handleCancel, handleFormTypeChange }) => {
+interface LoginFormProps {
+  handleCancel: () => void;
+  handleFormTypeChange: () => void;
+}
+
+const LoginForm: FC<LoginFormProps> = ({ handleCancel, handleFormTypeChange }) => {
   const { userStore } = useContext(Context);
   const { t } = useTranslation();
   const { response, loading, error, fetchData } = useAxios();
@@ -44,7 +49,7 @@ const LoginForm = ({ handleCancel, handleFormTypeChange }) => {
     defaultValues
   });
 
-  async function onSubmit(data) {
+  async function onSubmit(data: ILogin) {
     fetchData({ service: userService.login, data });
   }
 

@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import { Modal } from 'antd';
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 import { useTranslation } from 'react-i18next';
 
-const ModalWindow = ({ isModalWindowActive, setIsModalWindowActive }) => {
-  const [currentFormType, setCurrentFormType] = useState('login.title');
+interface ModalWindowProps {
+  isModalWindowActive: boolean;
+  setIsModalWindowActive: (bool: boolean) => void;
+}
+
+const ModalWindow: FC<ModalWindowProps> = ({ isModalWindowActive, setIsModalWindowActive }) => {
+  const [currentFormType, setCurrentFormType] = useState<string>('login.title');
   const { t } = useTranslation();
   const handleCancel = () => {
     setIsModalWindowActive(false);

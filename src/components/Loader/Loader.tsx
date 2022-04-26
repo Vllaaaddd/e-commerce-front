@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
-const Loader = ({ loading, children }) => {
+interface ILoader {
+  loading: boolean;
+  children: ReactNode;
+}
+
+const Loader: FC<ILoader> = ({ loading, children }) => {
   const antIcon = <LoadingOutlined style={{ fontSize: 40, color: 'green' }} spin />;
 
   return (

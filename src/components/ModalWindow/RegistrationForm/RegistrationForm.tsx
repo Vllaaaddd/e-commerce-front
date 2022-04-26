@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import {
   Acception,
   Container,
@@ -30,7 +30,12 @@ const styles = {
   eyeOutlined: { margin: '0 0 3% 3%' }
 };
 
-const RegistrationForm = ({ handleCancel, handleFormTypeChange }) => {
+interface IRegistrationFormProps {
+  handleCancel: () => void;
+  handleFormTypeChange: () => void;
+}
+
+const RegistrationForm: FC<IRegistrationFormProps> = ({ handleCancel, handleFormTypeChange }) => {
   const { userStore } = useContext(Context);
   const { t } = useTranslation();
   const { response, loading, error, fetchData } = useAxios();
@@ -43,7 +48,7 @@ const RegistrationForm = ({ handleCancel, handleFormTypeChange }) => {
     defaultValues
   });
 
-  async function onSubmit(data) {
+  async function onSubmit(data: object) {
     fetchData({ service: userService.register, data });
   }
 
