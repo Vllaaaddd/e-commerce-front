@@ -1,12 +1,12 @@
 import { Wrapper } from './Home.styles';
-import HomeSideMenu from './HomeSideMenu';
-import HomeMainContent from './HomeMainContent';
+import SideMenu from './SideMenu';
+import MainContent from './MainContent';
 
 const Home = () => {
   return (
     <Wrapper>
-      <HomeSideMenu />
-      <HomeMainContent />
+      <SideMenu />
+      <MainContent />
     </Wrapper>
   );
 };

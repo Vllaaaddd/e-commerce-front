@@ -1,4 +1,4 @@
-import { Wrapper, SliderImage } from './HomeSlider.styles';
+import { Wrapper, SliderImage } from './Slider.styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -21,7 +21,7 @@ const responsive = {
   }
 };
 
-const HomeSlider = () => {
+const Slider = () => {
   return (
     <Wrapper>
       <Carousel
@@ -39,4 +39,4 @@ const HomeSlider = () => {
   );
 };
 
-export default HomeSlider;
+export default Slider;

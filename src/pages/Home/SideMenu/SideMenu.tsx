@@ -1,7 +1,7 @@
-import { Wrapper, Content } from './HomeSideMenu.styles';
+import { Wrapper, Content } from './SideMenu.styles';
 import CategoriesList from './CategoriesList';
 
-const HomeSideMenu = () => {
+const SideMenu = () => {
   return (
     <Wrapper>
       <Content>
@@ -11,4 +11,4 @@ const HomeSideMenu = () => {
   );
 };
 
-export default HomeSideMenu;
+export default SideMenu;
