@@ -1,22 +1,20 @@
-import React from 'react';
+import { FC } from 'react';
 import ProductItem from '../ProductItem';
+import { IProduct } from '../../../../types/product';
 import { Container, Title, Wrapper } from './ProductList.styles';
-import { popularProducts, hotProducts } from '../../../../data';
+interface IProductListProps {
+  categoryTitle: string;
+  itemsList: IProduct[];
+}
 
-const ProductList = () => {
+const ProductList: FC<IProductListProps> = ({ categoryTitle, itemsList }) => {
   return (
     <>
       <Container>
-        <Title>Популярные товары</Title>
+        <Title>{categoryTitle}</Title>
         <Wrapper>
-          {popularProducts.map((item, index) => (
-            <ProductItem item={item} key={index} />
-          ))}
-        </Wrapper>
-        <Title>Горячие новинки</Title>
-        <Wrapper>
-          {hotProducts.map((item, index) => (
-            <ProductItem item={item} key={index} />
+          {itemsList.map((item) => (
+            <ProductItem item={item} />
           ))}
         </Wrapper>
       </Container>

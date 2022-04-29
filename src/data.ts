@@ -1,4 +1,6 @@
-export const popularProducts = [
+import { IProduct } from './types/product';
+
+export const popularProducts: IProduct[] = [
   {
     img: 'https://content1.rozetka.com.ua/goods/images/preview/188039974.jpg',
     description: 'Зарядное устройство',
@@ -31,7 +33,7 @@ export const popularProducts = [
   }
 ];
 
-export const hotProducts = [
+export const hotProducts: IProduct[] = [
   {
     img: 'https://content1.rozetka.com.ua/goods/images/preview/188039974.jpg',
     description: 'Зарядное устройство',

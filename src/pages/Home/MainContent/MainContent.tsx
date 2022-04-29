@@ -1,12 +1,12 @@
 import { Wrapper } from './MainContent.styles';
-import ProductList from './ProductList';
+import Products from './Products';
 import Slider from './Slider';
 
 const MainContent = () => {
   return (
     <Wrapper>
       <Slider />
-      <ProductList />
+      <Products />
     </Wrapper>
   );
 };
